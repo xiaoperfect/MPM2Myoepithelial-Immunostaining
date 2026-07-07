@@ -18,17 +18,6 @@ Target B : CK5/6 myoepithelial immunohistochemical image
 Output   : virtual myoepithelial immunohistochemical image
 ```
 
-## Main features
-
-```text
-1. Paired MPM-to-CK5/6 virtual immunostaining
-2. Modified conditional GAN-based image translation framework
-3. Residual path for structural information transfer
-4. Channel-spatial attention module for feature enhancement
-5. Structural consistency loss for preserving myoepithelial boundaries
-6. Quantitative evaluation using PSNR, SSIM
-```
-
 ## Environment
 
 This code was implemented using Python and PyTorch.
