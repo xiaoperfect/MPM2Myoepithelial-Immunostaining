@@ -222,7 +222,9 @@ Label-free multiphoton microscopy-based virtual myoepithelial immunostaining for
 
 ## Code and model weights
 
-The analysis pipeline code and trained model weights supporting the findings of this study are publicly available in this GitHub repository.
+The analysis pipeline code supporting the findings of this study is publicly available in this GitHub repository. The trained model weights are available from the v1.0.0 release:
+
+https://github.com/xiaoperfect/MPM2Myoepithelial-Immunostaining/releases/tag/v1.0.0
 
 ## License
 
