@@ -2,13 +2,13 @@
 
 This repository provides the PyTorch implementation for label-free multiphoton microscopy (MPM)-based virtual myoepithelial immunostaining.
 
-The model learns a paired image-to-image translation mapping from label-free MPM images to CK5/6 myoepithelial immunohistochemical images. It is designed to generate virtual myoepithelial immunostaining images for assisting the assessment of myoepithelial integrity in breast ductal carcinoma in situ with microinvasion.
+The model learns a paired image-to-image translation mapping from label-free MPM images to myoepithelial immunohistochemical images. It is designed to generate virtual myoepithelial immunostaining images for assisting the assessment of myoepithelial integrity in breast ductal carcinoma in situ with microinvasion.
 
 ## Overview
 
 Conventional myoepithelial immunohistochemistry requires additional tissue sections, antibody incubation, chromogenic staining and multiple sample-processing steps. This project develops a modified paired conditional generative adversarial network for generating virtual CK5/6 myoepithelial immunohistochemical images from label-free MPM images.
 
-The model is built upon a paired image-to-image translation framework and includes task-specific modifications for MPM-to-CK5/6 virtual immunostaining, including residual structural transfer, channel-spatial attention and structural consistency constraints.
+The model is built upon a paired image-to-image translation framework and includes task-specific modifications for MPM-to-virtual immunostaining, including residual path, channel-spatial attention and structural consistency constraints.
 
 The task is formulated as:
 
@@ -26,7 +26,7 @@ Output   : virtual myoepithelial immunohistochemical image
 3. Residual path for structural information transfer
 4. Channel-spatial attention module for feature enhancement
 5. Structural consistency loss for preserving myoepithelial boundaries
-6. Quantitative evaluation using PSNR, SSIM, LPIPS and KID
+6. Quantitative evaluation using PSNR, SSIM
 ```
 
 ## Environment
