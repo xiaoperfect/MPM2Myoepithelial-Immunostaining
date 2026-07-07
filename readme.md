@@ -204,11 +204,9 @@ The commonly used evaluation metrics include:
 ```text
 PSNR
 SSIM
-LPIPS
-KID
 ```
 
-Higher PSNR and SSIM values indicate better pixel-level reconstruction quality and structural similarity. Lower LPIPS and KID values indicate better perceptual similarity and image-distribution consistency.
+Higher PSNR and SSIM values indicate better pixel-level reconstruction quality and structural similarity.
 
 ## Notes on image alignment
 
