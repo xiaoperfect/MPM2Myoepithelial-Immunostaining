@@ -6,9 +6,11 @@ The model learns a paired image-to-image translation mapping from label-free MPM
 
 ## Overview
 
-Conventional myoepithelial immunohistochemistry requires additional tissue sections, antibody incubation, chromogenic staining and multiple sample-processing steps. In this project, label-free MPM images are used as input, and a Pix2Pix-based conditional generative adversarial network is trained to generate virtual CK5/6 myoepithelial immunohistochemical images.
+Conventional myoepithelial immunohistochemistry requires additional tissue sections, antibody incubation, chromogenic staining and multiple sample-processing steps. This project develops a modified paired conditional generative adversarial network for generating virtual CK5/6 myoepithelial immunohistochemical images from label-free MPM images.
 
-The task is formulated as paired image-to-image translation:
+The model is built upon a paired image-to-image translation framework and includes task-specific modifications for MPM-to-CK5/6 virtual immunostaining, including residual structural transfer, channel-spatial attention and structural consistency constraints.
+
+The task is formulated as:
 
 ```text
 Input A  : label-free MPM image
@@ -16,28 +18,15 @@ Target B : CK5/6 myoepithelial immunohistochemical image
 Output   : virtual myoepithelial immunohistochemical image
 ```
 
-## Repository structure
+## Main features
 
 ```text
-MPM2Myoepithelial-Immunostaining/
-├── data/
-│   ├── trainA/
-│   ├── trainB/
-│   ├── testA/
-│   └── testB/
-├── datasets/
-│   ├── combine_A_and_B.py
-│   └── MPM_CK56/
-│       ├── train/
-│       └── test/
-├── models/
-├── options/
-├── util/
-├── train.py
-├── test.py
-├── evaluate.py
-├── requirements.txt
-└── readme.md
+1. Paired MPM-to-CK5/6 virtual immunostaining
+2. Modified conditional GAN-based image translation framework
+3. Residual path for structural information transfer
+4. Channel-spatial attention module for feature enhancement
+5. Structural consistency loss for preserving myoepithelial boundaries
+6. Quantitative evaluation using PSNR, SSIM, LPIPS and KID
 ```
 
 ## Environment
@@ -70,7 +59,7 @@ tqdm
 
 The MPM images and CK5/6 immunohistochemical images should be spatially aligned before training.
 
-For paired Pix2Pix training, each input MPM image should have a corresponding CK5/6 immunohistochemical image with the same filename.
+Each input MPM image should have a corresponding CK5/6 immunohistochemical image with the same filename.
 
 The expected folder structure before combining paired images is:
 
@@ -105,7 +94,7 @@ The filenames in `trainA` and `trainB` should match. The same rule applies to `t
 
 ## Combine aligned image pairs
 
-This repository follows the Pix2Pix paired-data format, where the input image and the target image are concatenated into a single image.
+This repository uses the aligned paired-data format, where the input image and the target image are concatenated into a single image before training.
 
 To generate the training set:
 
@@ -149,12 +138,12 @@ right side : CK5/6 immunohistochemical image
 
 ## Training
 
-To train the Pix2Pix-based virtual immunostaining model:
+To train the modified virtual immunostaining model:
 
 ```bash
 python train.py \
   --dataroot ./datasets/MPM_CK56 \
-  --name mpm_ck56_pix2pix \
+  --name mpm_ck56_virtual_staining \
   --model pix2pix \
   --direction AtoB \
   --dataset_mode aligned \
@@ -162,10 +151,12 @@ python train.py \
   --output_nc 3
 ```
 
+Note: the argument `--model pix2pix` refers to the model interface used in this repository. The actual model has been modified for MPM-to-CK5/6 virtual myoepithelial immunostaining.
+
 The trained checkpoints will be saved in:
 
 ```text
-checkpoints/mpm_ck56_pix2pix/
+checkpoints/mpm_ck56_virtual_staining/
 ```
 
 ## Testing
@@ -175,7 +166,7 @@ To generate virtual CK5/6 myoepithelial immunohistochemical images on the test s
 ```bash
 python test.py \
   --dataroot ./datasets/MPM_CK56 \
-  --name mpm_ck56_pix2pix \
+  --name mpm_ck56_virtual_staining \
   --model pix2pix \
   --direction AtoB \
   --dataset_mode aligned \
@@ -186,7 +177,7 @@ python test.py \
 The generated images will be saved in:
 
 ```text
-results/mpm_ck56_pix2pix/
+results/mpm_ck56_virtual_staining/
 ```
 
 ## Evaluation
