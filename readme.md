@@ -13,7 +13,7 @@ The task is formulated as paired image-to-image translation:
 ```text
 Input A  : label-free MPM image
 Target B : CK5/6 myoepithelial immunohistochemical image
-Output   : virtual CK5/6 myoepithelial immunohistochemical image
+Output   : virtual myoepithelial immunohistochemical image
 ```
 
 ## Repository structure
