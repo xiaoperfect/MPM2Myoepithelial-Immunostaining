@@ -11,8 +11,6 @@ env/
 *.env
 
 # Data
-data/
-datasets/
 raw_data/
 *.tif
 *.tiff
@@ -53,3 +51,4 @@ models/cycle_gan_model.py
 models/template_model.py
 models/test_model.py
 util/get_data.py
+models/pix2pix_model_TVloss.py
