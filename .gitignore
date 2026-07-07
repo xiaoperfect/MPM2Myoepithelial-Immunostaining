@@ -1,0 +1,55 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environments
+.venv/
+venv/
+env/
+*.env
+
+# Data
+data/
+datasets/
+raw_data/
+*.tif
+*.tiff
+*.svs
+*.ndpi
+*.png
+*.jpg
+*.jpeg
+*.bmp
+
+# Outputs
+outputs/
+results/
+runs/
+logs/
+visuals/
+checkpoints/
+
+# Model weights
+*.pth
+*.pt
+*.ckpt
+*.onnx
+
+# IDE
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Unused original pix2pix/cyclegan files
+docs/
+scripts/
+models/colorization_model.py
+models/cycle_gan_model.py
+models/template_model.py
+models/test_model.py
+util/get_data.py
